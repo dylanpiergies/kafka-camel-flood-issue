@@ -1,0 +1,10 @@
+camel:
+  component:
+    kafka:
+      brokers: "localhost:9093"
+      poll-on-error: reconnect
+      reconnect-backoff-ms: 1000
+      reconnect-backoff-max-ms: 10000
+      ssl-truststore-location: ./server.crt
+      ssl-truststore-type: PEM
+      security-protocol: SSL

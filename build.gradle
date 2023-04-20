@@ -1,0 +1,39 @@
+import org.springframework.boot.gradle.plugin.SpringBootPlugin
+
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '2.7.8'
+}
+
+sourceCompatibility = 17
+targetCompatibility = 17
+
+group 'org.dylanpiergies.camel'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation platform(SpringBootPlugin.BOM_COORDINATES)
+
+    implementation platform('org.apache.camel.springboot:camel-spring-boot-dependencies:3.20.2')
+
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    implementation 'org.springframework.boot:spring-boot-starter-undertow'
+
+    implementation('org.springframework.boot:spring-boot-starter-web') {
+        exclude group: 'org.springframework.boot', module: 'spring-boot-starter-tomcat'
+    }
+
+    // Full list of Camel Spring Boot Starters here: https://camel.apache.org/camel-spring-boot/3.20.x/list.html
+    implementation 'org.apache.camel.springboot:camel-core-starter'
+    implementation 'org.apache.camel.springboot:camel-log-starter'
+    implementation 'org.apache.camel.springboot:camel-kafka-starter'
+
+    implementation 'org.apache.camel:camel-endpointdsl'
+}
+
+test {
+    useJUnitPlatform()
+}
