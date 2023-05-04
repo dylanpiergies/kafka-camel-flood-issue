@@ -14,7 +14,6 @@ openssl req -x509 \
             -subj "/CN=kafka-client" \
             -keyout client.key -out client.crt
 
-openssl x509 -in server.crt -out server.pem -outform PEM
 openssl x509 -in client.crt -out client.pem -outform PEM
 
 cat server.crt server.key > server.pem
